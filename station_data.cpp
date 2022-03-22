@@ -138,10 +138,15 @@ bool get_data(map<long unsigned int, station_data>& sd)
 
 	string line;
 
+	size_t station_count = 1;
+
 	while (getline(infile, line))
 	{
 		if (line == "")
 			continue;
+
+		if (station_count % 1000 == 0)
+			cout << "Read " << station_count << " stations." << endl;
 
 		station_data s;
 
@@ -214,9 +219,10 @@ bool get_data(map<long unsigned int, station_data>& sd)
 		}
 
 		sd[station_id_int] = s;
+		station_count++;
 	}
 
-	cout << "Read " << sd.size() << " stations." << endl;
+	cout << "Read " << sd.size() << " stations altogether." << endl;
 
 	return true;
 }
