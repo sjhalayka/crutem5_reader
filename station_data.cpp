@@ -376,9 +376,9 @@ void write_trend_histogram(const map<long unsigned int, station_data>& sd, long 
 	plotcmd << "set grid" << endl;
 	plotcmd << "set xlabel \"Slope\"" << endl;
 	plotcmd << "set ylabel \"Count\"" << endl;
-	plotcmd << "set title \"Num slopes = " << slopes.size() << ", slope min = " << slope_min << ", slope max = " << slope_max << ", slope mean = " << slope_mean << ", num bins = " << num_histogram_bins << "\"" << endl;
-	//	plotcmd << "set xrange [" << slope_min << ':' << slope_max << ']' << endl;
-	plotcmd << "set xrange [" << -0.2 << ':' << 0.2 << ']' << endl;
+	plotcmd << "set title \"Num slopes = " << slopes.size() << ", min = " << slope_min << ", max = " << slope_max << ", mean = " << slope_mean << ", num bins = " << num_histogram_bins << "\"" << endl;
+//	plotcmd << "set xrange [" << slope_min << ':' << slope_max << ']' << endl;
+	plotcmd << "set xrange [" << -2 << ':' << 2 << ']' << endl;
 	plotcmd << "plot \"histogram.txt\" with boxes" << endl;
 	plotcmd << "set terminal wxt" << endl;
 	plotcmd << "set output" << endl;

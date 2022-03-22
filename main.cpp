@@ -10,6 +10,7 @@ using namespace std;
 
 int main(void)
 {
+	// Station ID is the map key
 	map<long unsigned int, station_data> sd;
 	const size_t min_years_per_slope = 20;
 
