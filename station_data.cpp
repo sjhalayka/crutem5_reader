@@ -231,7 +231,7 @@ void get_local_trends(const station_data &s, const short unsigned int& first_yea
 {
 	output_trends.clear();
 
-	// x is year, y is temperature
+	// x is year, y is temperature anomaly
 	// one vector per month
 	vector<complex<float>> xy[12];
 
@@ -305,7 +305,7 @@ void write_trend_histogram(const map<long unsigned int, station_data>& sd, long 
 
 	for (map<long unsigned int, station_data>::const_iterator cs = sd.begin(); cs != sd.end(); cs++)
 	{
-		// x is year, y is temperature
+		// x is year, y is temperature anomaly
 		// one vector per month
 		vector<complex<float>> xy[12];
 
