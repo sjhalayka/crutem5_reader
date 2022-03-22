@@ -40,7 +40,7 @@ int main(void)
 
 	get_mean_and_std_deviation(sd, min_year, max_year, mean, std_dev, min_years_per_slope);
 
-	cout << "Temperature anomaly trend (degrees per decade): ";
+	cout << "Temperature anomaly trend (tenths of degree per year, or equivalently degrees per decade): " << endl;
 	cout << mean << " +/- " << std_dev << endl;
 
 
