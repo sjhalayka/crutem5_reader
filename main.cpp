@@ -36,6 +36,8 @@ int main(void)
 	float mean = 0;
 	float std_dev = 0;
 
+	//min_year = 1910; //=1981;
+
 	get_mean_and_std_deviation(sd, min_year, max_year, mean, std_dev, min_years_per_slope);
 
 	cout << "Temperature anomaly trend: ";
