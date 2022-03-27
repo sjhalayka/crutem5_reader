@@ -160,6 +160,7 @@ bool get_data(map<long unsigned int, station_data>& sd)
 		string country = line.substr(41, 12);
 		string first_year = line.substr(56, 4);
 		string last_year = line.substr(60, 4);
+		// skip the rest of the station description...
 
 		station_id = trim(station_id);
 		latitude = trim(latitude);
@@ -232,8 +233,7 @@ void get_local_trends(const station_data &s, const short unsigned int& first_yea
 	output_trends.clear();
 
 	// x is year, y is temperature anomaly
-	// one vector per month
-	vector<complex<float>> xy[12];
+	vector<complex<float>> xy_all;
 
 	for(map<short unsigned int, year_data>::const_iterator cy = s.years.begin(); cy != s.years.end(); cy++)
 	{
@@ -242,12 +242,13 @@ void get_local_trends(const station_data &s, const short unsigned int& first_yea
 
 		for(size_t k = 0; k < 12; k++)
 			if((cy->second).temperature_anomalies[k] != -999.0f) // -999 indicates missing record
-				xy[k].push_back(complex<float>(static_cast<float>(cy->first), (cy->second).temperature_anomalies[k]));
+				xy_all.push_back(complex<float>(static_cast<float>(cy->first), (cy->second).temperature_anomalies[k]));
+				//xy[k].push_back(complex<float>(static_cast<float>(cy->first), (cy->second).temperature_anomalies[k]));
 	}
 
-	for(size_t j = 0; j < 12; j++)
-		if(min_samples_per_slope <= xy[j].size())
-			output_trends.push_back(regline_slope(xy[j]));
+	//for (size_t j = 0; j < xy_all.size(); j++)
+		if (min_samples_per_slope <= xy_all.size())
+			output_trends.push_back(regline_slope(xy_all));
 }
 
 
